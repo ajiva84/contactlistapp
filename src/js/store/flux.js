@@ -1,19 +1,17 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
+			contact: [
+				("id": "1732"),
+				("agenda_slug": "Azam2_super_agenda"),
+				("full_name": "Dave Bradley"),
+				("email": "dave@gmail.com"),
+				("phone": "7864445566"),
+				("address": "47568 NW 34ST, 33434 FL, USA"),
+				("created_at": "2020-12-22 23:55:08")
 			]
 		},
+
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
