@@ -8,16 +8,18 @@ export const ContactList = props => {
 	const params = useParams();
 	return (
 		<ul className="list-group container">
-			{store.contact.map((contact, map) => {
+			{store.contact.map((contact, index) => {
 				return;
 				<li className="list-group-item" key={index}>
 					<div className="Col-2">
-						<img src="" className="rounded-circle img-fluid" alt="contact Avatat" />
+                        <img src="" 
+                        className="rounded-circle img-fluid" 
+                        alt="contact Avatar" />
 					</div>
 					<div className="Col-8">
 						{" "}
 						<img src="" />
-						<h5>{contact.full.name}</h5>
+						<h5>{contact.full_name}</h5>
 						<ul className="list-unstyled">
 							<li>
 								<div className="row">
@@ -36,7 +38,7 @@ export const ContactList = props => {
 								</div>
 							</li>
 							<li>
-								<div className="row">
+								{/* <div className="row">
 									<div className="col">
 										<i className="fas fa-map-marker-alt" />
 									</div>
@@ -44,17 +46,16 @@ export const ContactList = props => {
 								</div>
 							</li>
 						</ul>
-					</div>
-					<div className="Col-2">
-						{" "}
+					</div> */}
+					{/* <div className="Col-2">
+						{/* {" "}
 						<img src="" />
 						<h5>{contact.full_name}</h5>
 						<ul className="list-unstyled" />
 						<li />
-					</div>
+					</div> */} */}
 				</li>;
 			})}
-			; )
 		</ul>
 	);
 };
