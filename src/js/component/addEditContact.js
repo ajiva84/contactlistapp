@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
+import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { Context } from "../store/appContext";
 
 import "../../styles/demo.scss";
@@ -10,33 +10,33 @@ export const AddEditContact = () => {
 
 	return (
 		<div className="container">
-			<ul className="list-group">
-				{store.demo.map((item, index) => {
-					return (
-						<li
-							key={index}
-							className="list-group-item d-flex justify-content-between"
-							style={{ background: item.background }}>
-							<Link to={"/single/" + index}>
-								<span>Link to: {item.title}</span>
-							</Link>
-							{// Conditional render example
-							// Check to see if the background is orange, if so, display the message
-							item.background === "orange" ? (
-								<p style={{ color: item.initial }}>
-									Check store/flux.js scroll to the actions to see the code
-								</p>
-							) : null}
-							<button className="btn btn-success" onClick={() => actions.changeColor(index, "orange")}>
-								Change Color
-							</button>
-						</li>
-					);
-				})}
-			</ul>
-			<br />
+			<h3 className="text-center">
+				<strong>Add a new contact</strong>
+			</h3>
+			<Form>
+				<Form.Group controlId="formBasicFullName">
+					<Form.Label>Full Name</Form.Label>
+					<Form.Control type="name" placeholder="Full Name" />
+				</Form.Group>
+				<Form.Group controlId="formBasicEmail">
+					<Form.Label>Email</Form.Label>
+					<Form.Control type="email" placeholder="Enter email" />
+				</Form.Group>
+				<Form.Group controlId="formBasicPhone">
+					<Form.Label>Phone</Form.Label>
+					<Form.Control type="phone" placeholder="Enter phone" />
+				</Form.Group>
+				<Form.Group controlId="formBasicAddress">
+					<Form.Label>Address</Form.Label>
+					<Form.Control type="address" placeholder="Enter Address" />
+				</Form.Group>
+
+				<Button variant="primary" type="submit">
+					Submit
+				</Button>
+			</Form>
 			<Link to="/">
-				<button className="btn btn-primary">Back home</button>
+				<a href="#">or get back to contacts</a>
 			</Link>
 		</div>
 	);

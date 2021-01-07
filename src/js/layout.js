@@ -4,6 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
 import { AddEditContact } from "./component/addEditContact";
+import { ContactList } from "./component/contactList";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
