@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 
 import "../../styles/demo.scss";
 
-export const AddEditContact = () => {
+export const Addcontact = () => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 	const theid = params.theid;
@@ -14,23 +14,31 @@ export const AddEditContact = () => {
 	const [phone, setPhone] = useState(typeof theid !== "undefined" ? store.contact[theid].phone : null);
 	const [address, setAddress] = useState(typeof theid !== "undefined" ? store.contact[theid].address : null);
 
-	useEffect(
-		() => {
-			if (typeof theid === "undefined") {
-				setName("");
-				setEmail(null);
-				setPhone(null);
-				setAddress(null);
-				console.log(name);
-			}
-		},
-		[theid]
-	);
+	function inputclearing() {
+		setName("");
+		setEmail("");
+		setPhone("");
+		setAddress("");
+	}
+
+	// useEffect(
+	// 	() => {
+	// 		if (typeof theid === "undefined") {
+	// 			setName(null);
+	// 			setEmail(null);
+	// 			setPhone(null);
+	// 			setAddress(null);
+	// 			reload();
+	// 			console.log(theid);
+	// 		}
+	// 	},
+	// 	[params.theid]
+	// );
 
 	return (
 		<div className="container">
 			<h3 className="text-center">{typeof theid !== "undefined" ? "Edit " : "Add a new "} contact</h3>
-			<Form>
+			<Form onSubmit={e => preventDefault()}>
 				<Form.Group controlId="name">
 					<Form.Label>Full Name</Form.Label>
 					<Form.Control
@@ -70,22 +78,21 @@ export const AddEditContact = () => {
 
 				<Button
 					variant="primary"
-					type="submit"
-					onClick={e =>
+					type="button"
+					onClick={e => {
 						actions.addContact({
 							agenda_slug: "Azam_super_agenda",
-							full_name: { name },
-							email: { email },
-							phone: { phone },
-							address: { address }
-						})
-					}>
+							full_name: name,
+							email: email,
+							phone: phone,
+							address: address
+						});
+						inputclearing();
+					}}>
 					Submit
 				</Button>
 			</Form>
-			<Link to="/">
-				<a href="#">or get back to contacts</a>
-			</Link>
+			<Link to="/">or get back to contacts</Link>
 		</div>
 	);
 };

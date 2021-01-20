@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
-import { AddEditContact } from "./component/addEditContact";
+import { Addcontact } from "./component/addcontact";
 import { ContactList } from "./component/contactList";
 import injectContext from "./store/appContext";
 
@@ -26,10 +26,10 @@ const Layout = () => {
 							<Home />
 						</Route>
 						<Route exact path="/add">
-							<AddEditContact />
+							<Addcontact />
 						</Route>
 						<Route exact path="/edit/:theid">
-							<AddEditContact />
+							<Addcontact />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
