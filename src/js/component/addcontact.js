@@ -1,18 +1,21 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import PropTypes from "prop-types";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { Context } from "../store/appContext";
 
 import "../../styles/demo.scss";
 
 export const Addcontact = () => {
+	const history = useHistory();
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 	const theid = params.theid;
-	const [name, setName] = useState(typeof theid !== "undefined" ? store.contact[theid].full_name : null);
-	const [email, setEmail] = useState(typeof theid !== "undefined" ? store.contact[theid].email : null);
-	const [phone, setPhone] = useState(typeof theid !== "undefined" ? store.contact[theid].phone : null);
-	const [address, setAddress] = useState(typeof theid !== "undefined" ? store.contact[theid].address : null);
+	console.log(theid);
+	const [name, setName] = useState(theid !== undefined ? store.contact[theid].full_name : null);
+	const [email, setEmail] = useState(theid !== undefined ? store.contact[theid].email : null);
+	const [phone, setPhone] = useState(theid !== undefined ? store.contact[theid].phone : null);
+	const [address, setAddress] = useState(theid !== undefined ? store.contact[theid].address : null);
 
 	function inputclearing() {
 		setName("");
@@ -21,19 +24,19 @@ export const Addcontact = () => {
 		setAddress("");
 	}
 
-	// useEffect(
-	// 	() => {
-	// 		if (typeof theid === "undefined") {
-	// 			setName(null);
-	// 			setEmail(null);
-	// 			setPhone(null);
-	// 			setAddress(null);
-	// 			reload();
-	// 			console.log(theid);
-	// 		}
-	// 	},
-	// 	[params.theid]
-	// );
+	useEffect(
+		() => {
+			if (theid === undefined) {
+				setName(null);
+				setEmail(null);
+				setPhone(null);
+				setAddress(null);
+
+				console.log(theid);
+			}
+		},
+		[params.theid]
+	);
 
 	return (
 		<div className="container">
@@ -87,6 +90,7 @@ export const Addcontact = () => {
 							phone: phone,
 							address: address
 						});
+						history.push("/");
 						inputclearing();
 					}}>
 					Submit

@@ -9,9 +9,9 @@ export const Navbar = () => {
 					<span className="navbar-brand mb-0 h1">Contact List</span>
 				</Link>
 				<div className="ml-auto">
-					<Link to="/add">
+					<a href="/add">
 						<button className="btn btn-success">Add Contact</button>
-					</Link>
+					</a>
 				</div>
 			</span>
 		</nav>
